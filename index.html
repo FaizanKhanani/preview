@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Website Preview</title>
+<meta name="description" content="A free website preview made for your business by TekShove.">
+<meta property="og:title" content="Your new website preview">
+<meta property="og:description" content="We made this free preview for your business. Tap to see it.">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b1a17;--muted:#6b665d;--bg:#fbf8f2;--card:#fff;--line:#ece5d8;--accent:#c4552d;--accent2:#1f6f6a;--hero1:#1f6f6a;--hero2:#0f3d3a}
+body.salon{--accent:#b04a7a;--accent2:#5b3a5e;--hero1:#5b3a5e;--hero2:#2d1b30}
+body.guesthouse{--accent:#d08a2a;--accent2:#1d4e7a;--hero1:#1d4e7a;--hero2:#0c2742}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.bar{background:#111;color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:Fraunces,serif;font-size:22px;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:999px;font-size:15px;border:0}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6)}
+.btn.wa{background:#25d366}
+.hero{background:radial-gradient(1200px 500px at 80% -10%,rgba(255,255,255,.12),transparent),linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;border-radius:28px;padding:64px 40px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;bottom:-80px;width:320px;height:320px;border-radius:50%;background:var(--accent);opacity:.35;filter:blur(10px)}
+.pill{display:inline-block;background:rgba(255,255,255,.14);padding:6px 14px;border-radius:999px;font-size:13px;margin-bottom:18px}
+h1{font-family:Fraunces,serif;font-size:clamp(34px,6vw,60px);line-height:1.05;margin-bottom:16px;max-width:720px}
+.hero p{font-size:18px;opacity:.9;max-width:560px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+.stars{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:15px;position:relative;z-index:1}
+.stars b{font-size:22px}
+section{padding:64px 0}
+h2{font-family:Fraunces,serif;font-size:clamp(26px,4vw,38px);margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.card .tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.card h3{font-size:18px;margin:6px 0}
+.card .price{font-weight:600;margin-top:10px}
+.ph{height:150px;border-radius:14px;margin-bottom:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:.85}
+.reviews .card p{font-style:italic}
+.who{margin-top:14px;font-size:14px;color:var(--muted)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.map{border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:280px}
+.map iframe{width:100%;height:100%;min-height:280px;border:0}
+footer{padding:40px 0;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--line)}
+.float{position:fixed;right:18px;bottom:18px;z-index:9;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.demo{background:#fff4d6;border:1px dashed #d9b453;color:#6a5413;padding:12px 16px;border-radius:14px;font-size:14px;margin:18px 0}
+@media(max-width:600px){.hero{padding:44px 22px;border-radius:22px}section{padding:44px 0}nav .btn{display:none}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="wrap">
+  <nav><div class="logo" id="logo"></div><a class="btn wa" id="navwa">Book on WhatsApp</a></nav>
+  <div class="hero">
+    <span class="pill" id="pill"></span>
+    <h1 id="h1"></h1>
+    <p id="lead"></p>
+    <div class="cta"><a class="btn wa" id="herowa">Chat on WhatsApp</a><a class="btn ghost" id="call">Call us</a></div>
+    <div class="stars"><b id="rating"></b><span id="ratingtxt"></span></div>
+  </div>
+  <div class="demo">This is a free preview made for <b id="demoname"></b>. Photos, prices and wording will be replaced with your real ones.</div>
+
+  <section><h2 id="offerTitle"></h2><p class="sub" id="offerSub"></p><div class="grid" id="offers"></div></section>
+  <section class="reviews"><h2>What guests say</h2><p class="sub" id="revsub"></p><div class="grid" id="reviews"></div></section>
+  <section><h2>Find us</h2><p class="sub" id="findsub"></p>
+    <div class="info">
+      <div class="card"><h3>Opening hours</h3><p id="hours"></p><h3 style="margin-top:18px">Contact</h3><p id="contact"></p><div style="margin-top:18px"><a class="btn" id="dir" target="_blank">Get directions</a></div></div>
+      <div class="map"><iframe id="map" loading="lazy"></iframe></div>
+    </div>
+  </section>
+</div>
+<footer id="foot"></footer>
+<a class="btn wa float" id="floatwa">WhatsApp</a>
+<script>
+// Usage: demo.html?n=Business+Name&t=Diani&type=restaurant|salon|guesthouse&r=4.5&c=120&p=2547XXXXXXXX
+const q=new URLSearchParams(location.search);
+const C={name:q.get('n')||'Mvureni Beach Bar & Restaurant',town:q.get('t')||'Diani Beach',type:(q.get('type')||'restaurant').toLowerCase(),rating:q.get('r')||'4.3',count:q.get('c')||'691',phone:(q.get('p')||'254700000000').replace(/\D/g,'')};
+const T={
+ restaurant:{pill:'Fresh food in '+C.town,h1:'Fresh flavours by the ocean in '+C.town,lead:'Seafood, grills and Swahili favourites cooked to order. Reserve a table or order ahead in one message.',offerTitle:'From our kitchen',offerSub:'A taste of the menu. Full menu available on WhatsApp.',hours:'Monday to Sunday<br>10:00 am to 11:00 pm',wa:'Hi, I would like to book a table at ',
+  items:[['Signature','Grilled Catch of the Day','With coconut rice and kachumbari','KES 1,200'],['Swahili','Chicken Biryani','Slow cooked with fragrant spices','KES 900'],['From the grill','Mixed Seafood Platter','Prawns, calamari and fish for two','KES 3,200'],['Drinks','Fresh Juices and Cocktails','Mango, passion and dawa','From KES 300']]},
+ salon:{pill:'Hair, nails and beauty in '+C.town,h1:'Look and feel your best in '+C.town,lead:'Braids, nails, facials and grooming by a team our clients trust. Book your slot in one WhatsApp message.',offerTitle:'Our services',offerSub:'Popular treatments and starting prices.',hours:'Monday to Saturday<br>8:00 am to 8:00 pm<br>Sunday 10:00 am to 6:00 pm',wa:'Hi, I would like to book an appointment at ',
+  items:[['Hair','Braids and Styling','Knotless, cornrows and more','From KES 1,500'],['Nails','Gel Manicure and Pedicure','Long lasting shine','From KES 1,000'],['Skin','Facials and Waxing','Glow treatments for every skin','From KES 1,200'],['Grooming','Haircut and Beard','Clean cuts for men and kids','From KES 300']]},
+ guesthouse:{pill:'Your stay in '+C.town,h1:'A peaceful stay in '+C.town+', booked directly',lead:'Clean rooms, warm hosts and the beach nearby. Book directly with us on WhatsApp for our best rate.',offerTitle:'Rooms and rates',offerSub:'Best price when you book direct.',hours:'Check in from 2:00 pm<br>Check out by 10:00 am<br>Reception open 24 hours',wa:'Hi, I would like to check room availability at ',
+  items:[['Standard','Double Room','Air conditioning, Wi-Fi, private bathroom','From KES 3,500 / night'],['Family','Family Room','Space for four with garden view','From KES 6,000 / night'],['Extras','Breakfast and Airport Pickup','Ask us when you book','On request'],['Experiences','Tours and Excursions','Snorkelling, safaris and boat trips','On request']]}
+};
+const D=T[C.type]||T.restaurant;const wa='https://wa.me/'+C.phone+'?text='+encodeURIComponent(D.wa+C.name);
+document.body.className=C.type;document.title=C.name+' | '+C.town;
+const $=id=>document.getElementById(id);
+$('bar').textContent='Rated '+C.rating+' stars by '+C.count+' people on Google';
+$('logo').textContent=C.name;$('pill').textContent=D.pill;$('h1').textContent=D.h1;$('lead').textContent=D.lead;
+$('rating').textContent=C.rating+' ★★★★★';$('ratingtxt').textContent='from '+C.count+' Google reviews';
+['navwa','herowa','floatwa'].forEach(i=>$(i).href=wa);$('call').href='tel:+'+C.phone;
+$('demoname').textContent=C.name;$('offerTitle').textContent=D.offerTitle;$('offerSub').textContent=D.offerSub;
+$('offers').innerHTML=D.items.map(i=>`<div class="card"><div class="ph"></div><div class="tag">${i[0]}</div><h3>${i[1]}</h3><p class="sub" style="margin:0">${i[2]}</p><div class="price">${i[3]}</div></div>`).join('');
+$('revsub').textContent=C.rating+' out of 5 from '+C.count+' reviews on Google. Your real reviews will appear here.';
+$('reviews').innerHTML=['Amazing service and great value. We will definitely be back!','The team made us feel at home. Highly recommended in '+C.town+'.','Best experience we had on our trip. Thank you!'].map(t=>`<div class="card"><div style="color:#e8a317">★★★★★</div><p>"${t}"</p><div class="who">Sample review</div></div>`).join('');
+$('findsub').textContent=C.name+', '+C.town+', Kenya';$('hours').innerHTML=D.hours;
+$('contact').innerHTML='+'+C.phone+'<br>WhatsApp available';
+const mq=encodeURIComponent(C.name+' '+C.town+' Kenya');$('map').src='https://maps.google.com/maps?q='+mq+'&output=embed';$('dir').href='https://www.google.com/maps/search/?api=1&query='+mq;
+$('foot').innerHTML='© '+new Date().getFullYear()+' '+C.name+' · Website by <a href="https://tekshove.com" style="color:inherit"><b>TekShove</b></a>';
+</script>
+</body>
+</html>
