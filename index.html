@@ -2,105 +2,414 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Your Website Preview</title>
 <meta name="description" content="A free website preview made for your business by TekShove.">
 <meta property="og:title" content="Your new website preview">
-<meta property="og:description" content="We made this free preview for your business. Tap to see it.">
+<meta property="og:description" content="We designed this free preview for your business. Tap to see it.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&h=630&fit=crop&q=70">
 <meta name="robots" content="noindex">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1b1a17;--muted:#6b665d;--bg:#fbf8f2;--card:#fff;--line:#ece5d8;--accent:#c4552d;--accent2:#1f6f6a;--hero1:#1f6f6a;--hero2:#0f3d3a}
-body.salon{--accent:#b04a7a;--accent2:#5b3a5e;--hero1:#5b3a5e;--hero2:#2d1b30}
-body.guesthouse{--accent:#d08a2a;--accent2:#1d4e7a;--hero1:#1d4e7a;--hero2:#0c2742}
+:root{--bg:#0e0d0b;--bg2:#17150f;--ink:#f4ede1;--muted:#b3a993;--accent:#e2a64b;--accent-ink:#1a1206;--line:rgba(244,237,225,.14);--card:rgba(255,255,255,.04);--display:'Fraunces',serif;--body:'Manrope',system-ui,sans-serif;--radius:22px}
+body.salon{--bg:#f7efe9;--bg2:#efe3da;--ink:#2a1622;--muted:#7d6670;--accent:#8c3b5e;--accent-ink:#fff;--line:rgba(42,22,34,.12);--card:#fffaf6;--display:'Cormorant Garamond',serif}
+body.guesthouse{--bg:#f4efe6;--bg2:#e9e1d2;--ink:#132a2e;--muted:#5f716f;--accent:#0f6e6a;--accent-ink:#fff;--line:rgba(19,42,46,.12);--card:#fffdf8;--display:'DM Serif Display',serif}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.bar{background:#111;color:#fff;font-size:13px;text-align:center;padding:8px 16px}
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.logo{font-family:Fraunces,serif;font-size:22px;font-weight:700}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:999px;font-size:15px;border:0}
-.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6)}
-.btn.wa{background:#25d366}
-.hero{background:radial-gradient(1200px 500px at 80% -10%,rgba(255,255,255,.12),transparent),linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;border-radius:28px;padding:64px 40px;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-80px;bottom:-80px;width:320px;height:320px;border-radius:50%;background:var(--accent);opacity:.35;filter:blur(10px)}
-.pill{display:inline-block;background:rgba(255,255,255,.14);padding:6px 14px;border-radius:999px;font-size:13px;margin-bottom:18px}
-h1{font-family:Fraunces,serif;font-size:clamp(34px,6vw,60px);line-height:1.05;margin-bottom:16px;max-width:720px}
-.hero p{font-size:18px;opacity:.9;max-width:560px;margin-bottom:28px}
-.cta{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
-.stars{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:15px;position:relative;z-index:1}
-.stars b{font-size:22px}
-section{padding:64px 0}
-h2{font-family:Fraunces,serif;font-size:clamp(26px,4vw,38px);margin-bottom:8px}
-.sub{color:var(--muted);margin-bottom:32px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
-.card .tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
-.card h3{font-size:18px;margin:6px 0}
-.card .price{font-weight:600;margin-top:10px}
-.ph{height:150px;border-radius:14px;margin-bottom:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:.85}
-.reviews .card p{font-style:italic}
-.who{margin-top:14px;font-size:14px;color:var(--muted)}
-.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.map{border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:280px}
-.map iframe{width:100%;height:100%;min-height:280px;border:0}
-footer{padding:40px 0;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--line)}
-.float{position:fixed;right:18px;bottom:18px;z-index:9;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.demo{background:#fff4d6;border:1px dashed #d9b453;color:#6a5413;padding:12px 16px;border-radius:14px;font-size:14px;margin:18px 0}
-@media(max-width:600px){.hero{padding:44px 22px;border-radius:22px}section{padding:44px 0}nav .btn{display:none}}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.ribbon{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--accent);color:var(--accent-ink);font-size:12.5px;font-weight:600;letter-spacing:.02em;text-align:center;padding:7px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:31px}
+.ribbon b{font-weight:800}
+/* NAV */
+nav{position:fixed;top:31px;left:0;right:0;z-index:40;transition:.35s}
+nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;max-width:1180px;margin:0 auto}
+nav.solid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-size:24px;font-weight:600;letter-spacing:.01em;color:#fff;text-decoration:none;line-height:1.1}
+nav.solid .brand{color:var(--ink)}
+.links{display:flex;gap:26px;font-size:14px;font-weight:600}
+.links a{text-decoration:none;color:rgba(255,255,255,.85)}
+nav.solid .links a{color:var(--ink)}
+.pillbtn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;font-size:14.5px;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.pillbtn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px var(--accent)}
+.pillbtn.line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.pillbtn svg{width:18px;height:18px}
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;animation:kb 18s ease-out forwards;transform-origin:60% 40%}
+@keyframes kb{from{transform:scale(1.18)}to{transform:scale(1)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.1) 100%),linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.9) 100%)}
+.hero .content{position:relative;z-index:2;width:100%;padding-bottom:70px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px}
+.eyebrow:before{content:"";width:34px;height:1.5px;background:var(--accent)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,8.5vw,112px);line-height:.95;letter-spacing:-.02em;max-width:900px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+body.salon .hero h1 em,body.guesthouse .hero h1 em{color:#ffd9a8}
+body.guesthouse .hero h1{font-size:clamp(42px,6.6vw,86px);line-height:1}
+.hero p.lead{font-size:clamp(16px,2vw,19px);max-width:540px;margin:24px 0 32px;color:rgba(255,255,255,.88)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .meta{display:flex;gap:34px;flex-wrap:wrap;margin-top:44px;padding-top:26px;border-top:1px solid rgba(255,255,255,.22)}
+.meta div{font-size:13px;color:rgba(255,255,255,.75)}
+.meta b{display:block;font-family:var(--display);font-size:30px;font-weight:400;color:#fff;line-height:1.1}
+.open{display:inline-flex;align-items:center;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
+/* SECTIONS */
+section{padding:110px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:54px}
+.kicker{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5.2vw,64px);line-height:1;letter-spacing:-.015em}
+h2 em{font-style:italic;color:var(--accent)}
+.sec-head p{max-width:420px;color:var(--muted)}
+/* STORY */
+.story{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.story .imgs{position:relative;aspect-ratio:4/5}
+.story .imgs img{position:absolute;object-fit:cover;border-radius:var(--radius);box-shadow:0 30px 60px -25px rgba(0,0,0,.5)}
+.story .imgs img:first-child{inset:0 22% 14% 0;width:78%;height:86%}
+.story .imgs img:last-child{right:0;bottom:0;width:52%;height:52%;border:8px solid var(--bg)}
+body.salon .story .imgs img:first-child{border-radius:300px 300px var(--radius) var(--radius)}
+.story p{color:var(--muted);font-size:17px;margin:22px 0}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.feat{border-top:1px solid var(--line);padding-top:16px}
+.feat b{display:block;font-family:var(--display);font-size:22px;font-weight:400}
+.feat span{font-size:14px;color:var(--muted)}
+/* MENU / SERVICES */
+.menu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--ink);font:600 14px var(--body);padding:10px 20px;border-radius:999px;cursor:pointer;transition:.2s}
+.tab.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 70px}
+.item{display:grid;grid-template-columns:76px 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);animation:fadeUp .5s both}
+.item img{width:76px;height:76px;border-radius:16px;object-fit:cover}
+.item h4{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.2}
+.item p{font-size:14px;color:var(--muted)}
+.item .price{font-weight:700;color:var(--accent);white-space:nowrap}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* ROOMS */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.room{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .3s}
+.room:hover{transform:translateY(-6px)}
+.room .ph{aspect-ratio:4/3;overflow:hidden}
+.room .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.room:hover .ph img{transform:scale(1.06)}
+.room .bd{padding:22px 24px 26px}
+.room h4{font-family:var(--display);font-weight:400;font-size:26px}
+.room p{color:var(--muted);font-size:14.5px;margin:6px 0 16px}
+.room .row{display:flex;justify-content:space-between;align-items:center}
+.room .rate{font-weight:700}
+.room .rate small{font-weight:500;color:var(--muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tags span{font-size:12px;font-weight:600;background:var(--bg2);padding:5px 10px;border-radius:999px}
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:14px}
+.gallery figure{overflow:hidden;border-radius:18px;position:relative}
+.gallery figure:nth-child(1){grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.gallery figure:hover img{transform:scale(1.07)}
+/* REVIEWS */
+.rev-band{background:var(--bg2);overflow:hidden}
+.score{display:flex;align-items:center;gap:22px;margin-bottom:46px;flex-wrap:wrap}
+.score .big{font-family:var(--display);font-size:96px;line-height:.9}
+.stars{color:#f5b301;letter-spacing:3px;font-size:20px}
+.marquee{display:flex;gap:22px;width:max-content;animation:scroll 48s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.rcard{width:380px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.rcard p{font-family:var(--display);font-size:21px;line-height:1.4;margin:14px 0 18px}
+body.salon .rcard p{font-size:23px}
+.rcard .who{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700}
+/* BOOK */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:30px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.book .img{background-size:cover;background-position:center;min-height:520px;position:relative}
+.book .img:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 55%)}
+.book .img .cap{position:absolute;left:30px;bottom:28px;z-index:2;color:#fff;font-family:var(--display);font-size:30px;line-height:1.15;max-width:320px}
+.book form{padding:54px 50px}
+.book h3{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.05;margin-bottom:8px}
+.book .sub{color:var(--muted);margin-bottom:28px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+input,select{font:500 15px var(--body);padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none;width:100%}
+input:focus,select:focus{border-color:var(--accent)}
+.book .pillbtn{width:100%;justify-content:center;margin-top:20px;padding:17px}
+.note{font-size:13px;color:var(--muted);margin-top:14px;text-align:center}
+/* VISIT */
+.visit{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+.vcard h4{font-family:var(--display);font-weight:400;font-size:24px;margin-bottom:12px}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+.hours tr.today td{color:var(--accent);font-weight:700}
+.map{border-radius:var(--radius);overflow:hidden;min-height:420px;border:1px solid var(--line)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:saturate(.85)}
+body:not(.salon):not(.guesthouse) .map iframe{filter:invert(.9) hue-rotate(180deg) saturate(.6)}
+/* FOOTER */
+footer{padding:70px 0 120px;border-top:1px solid var(--line)}
+.fbig{font-family:var(--display);font-size:clamp(40px,8vw,96px);line-height:1;letter-spacing:-.02em;margin-bottom:30px}
+.frow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.credit{display:inline-flex;align-items:center;gap:8px}
+.credit b{color:var(--ink)}
+/* MOBILE BAR */
+.mbar{display:none}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:45;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 34px -8px rgba(37,211,102,.7);animation:bob 3s ease-in-out infinite}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+@keyframes bob{50%{transform:translateY(-6px)}}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:900px){
+ .links{display:none}
+ nav .pillbtn{display:none}
+ section{padding:76px 0}
+ .story,.book,.visit{grid-template-columns:1fr}
+ .story{gap:40px}
+ .menu-grid{grid-template-columns:1fr}
+ .rooms{grid-template-columns:1fr}
+ .gallery{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:150px}
+ .gallery figure:nth-child(1){grid-column:span 2;grid-row:span 1;height:220px}
+ .gallery figure:nth-child(1) img{height:220px}
+ .gallery figure:nth-child(1){grid-row:auto}
+ .hero h1{font-size:44px}
+ .ribbon{font-size:11px}
+ .brand{font-size:20px}
+ .hero .meta b{font-size:24px}
+ .book .img{min-height:260px}
+ .book form{padding:34px 22px}
+ .fgrid{grid-template-columns:1fr}
+ .rcard{width:300px}
+ .score .big{font-size:72px}
+ .hero .content{padding-bottom:104px}
+ .hero .meta{gap:22px}
+ .wa-float{display:none}
+ .mbar{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:45;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;padding:8px;box-shadow:0 18px 40px -12px rgba(0,0,0,.5)}
+ .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11.5px;font-weight:700;text-decoration:none;padding:9px 4px;border-radius:14px;color:var(--ink)}
+ .mbar a svg{width:20px;height:20px}
+ .mbar a.main{background:#25d366;color:#fff;flex-direction:row;gap:8px;font-size:14px}
+}
 </style>
 </head>
 <body>
-<div class="bar" id="bar"></div>
-<div class="wrap">
-  <nav><div class="logo" id="logo"></div><a class="btn wa" id="navwa">Book on WhatsApp</a></nav>
-  <div class="hero">
-    <span class="pill" id="pill"></span>
-    <h1 id="h1"></h1>
-    <p id="lead"></p>
-    <div class="cta"><a class="btn wa" id="herowa">Chat on WhatsApp</a><a class="btn ghost" id="call">Call us</a></div>
-    <div class="stars"><b id="rating"></b><span id="ratingtxt"></span></div>
-  </div>
-  <div class="demo">This is a free preview made for <b id="demoname"></b>. Photos, prices and wording will be replaced with your real ones.</div>
+<div class="ribbon" id="ribbon"></div>
 
-  <section><h2 id="offerTitle"></h2><p class="sub" id="offerSub"></p><div class="grid" id="offers"></div></section>
-  <section class="reviews"><h2>What guests say</h2><p class="sub" id="revsub"></p><div class="grid" id="reviews"></div></section>
-  <section><h2>Find us</h2><p class="sub" id="findsub"></p>
-    <div class="info">
-      <div class="card"><h3>Opening hours</h3><p id="hours"></p><h3 style="margin-top:18px">Contact</h3><p id="contact"></p><div style="margin-top:18px"><a class="btn" id="dir" target="_blank">Get directions</a></div></div>
-      <div class="map"><iframe id="map" loading="lazy"></iframe></div>
+<nav id="nav"><div class="in">
+  <a class="brand" href="#top" id="brand"></a>
+  <div class="links" id="links"></div>
+  <a class="pillbtn" id="navBook" href="#book"></a>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="bgimg" id="heroImg"></div>
+  <div class="wrap content">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="h1"></h1>
+    <p class="lead" id="lead"></p>
+    <div class="cta">
+      <a class="pillbtn" id="heroWa" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg><span id="heroWaTxt"></span></a>
+      <a class="pillbtn line" href="#menu" id="heroSecond"></a>
     </div>
-  </section>
+    <div class="meta">
+      <div><b id="mRating"></b><span class="stars">★★★★★</span></div>
+      <div><b id="mCount"></b>Google reviews</div>
+      <div><b class="open"><span class="dot"></span><span id="mOpen">Open</span></b><span id="mHours"></span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about"><div class="wrap story">
+  <div class="imgs rv"><img id="s1" alt=""><img id="s2" alt=""></div>
+  <div class="rv">
+    <div class="kicker" id="aboutK"></div>
+    <h2 id="aboutH"></h2>
+    <p id="aboutP"></p>
+    <div class="feats" id="feats"></div>
+  </div>
+</div></section>
+
+<section id="menu" style="background:var(--bg2)"><div class="wrap">
+  <div class="sec-head rv"><div><div class="kicker" id="menuK"></div><h2 id="menuH"></h2></div><p id="menuP"></p></div>
+  <div class="menu-tabs rv" id="tabs"></div>
+  <div id="menuBody"></div>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <div class="sec-head rv"><div><div class="kicker">Gallery</div><h2 id="galH"></h2></div><p id="galP"></p></div>
+  <div class="gallery rv" id="gal"></div>
+</div></section>
+
+<section class="rev-band" id="reviews">
+  <div class="wrap">
+    <div class="score rv"><div class="big" id="rBig"></div><div><div class="stars">★★★★★</div><div id="rTxt" style="color:var(--muted)"></div></div></div>
+  </div>
+  <div class="marquee" id="marq"></div>
+</section>
+
+<section id="book"><div class="wrap">
+  <div class="book rv">
+    <div class="img" id="bookImg"><div class="cap" id="bookCap"></div></div>
+    <form id="form">
+      <div class="kicker" id="bookK"></div>
+      <h3 id="bookH"></h3>
+      <p class="sub" id="bookSub"></p>
+      <div class="fgrid" id="fields"></div>
+      <button class="pillbtn" type="submit"><span id="bookBtn"></span></button>
+      <p class="note">Opens WhatsApp with your request ready to send.</p>
+    </form>
+  </div>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap">
+  <div class="sec-head rv"><div><div class="kicker">Visit us</div><h2 id="visitH"></h2></div></div>
+  <div class="visit rv">
+    <div class="vcard">
+      <h4>Opening hours</h4>
+      <table class="hours" id="hours"></table>
+      <h4 style="margin-top:30px">Contact</h4>
+      <p id="contact" style="color:var(--muted)"></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+        <a class="pillbtn" id="dir" target="_blank">Get directions</a>
+      </div>
+    </div>
+    <div class="map"><iframe id="map" loading="lazy" title="Map"></iframe></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fbig" id="fbig"></div>
+  <div class="frow"><span id="fcopy"></span><span class="credit">Designed &amp; built by <a href="https://tekshove.com" target="_blank"><b>TekShove</b></a></span></div>
+</div></footer>
+
+<a class="wa-float" id="waFloat" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
+
+<div class="mbar">
+  <a id="mCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a id="mDir" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Directions</a>
+  <a class="main" id="mWa" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span id="mWaTxt"></span></a>
 </div>
-<footer id="foot"></footer>
-<a class="btn wa float" id="floatwa">WhatsApp</a>
+
 <script>
-// Usage: demo.html?n=Business+Name&t=Diani&type=restaurant|salon|guesthouse&r=4.5&c=120&p=2547XXXXXXXX
 const q=new URLSearchParams(location.search);
-const C={name:q.get('n')||'Mvureni Beach Bar & Restaurant',town:q.get('t')||'Diani Beach',type:(q.get('type')||'restaurant').toLowerCase(),rating:q.get('r')||'4.3',count:q.get('c')||'691',phone:(q.get('p')||'254700000000').replace(/\D/g,'')};
+const C={name:(q.get('n')||'Havana Restaurant Diani').trim(),town:q.get('t')||'Diani Beach',type:(q.get('type')||'restaurant').toLowerCase(),rating:q.get('r')||'4.6',count:+(q.get('c')||120),phone:(q.get('p')||'254700000000').replace(/\D/g,'')};
+const U=(id,w=1400,h)=>`https://images.unsplash.com/${id}?w=${w}${h?'&h='+h+'&fit=crop':''}&q=72&auto=format`;
+const short=C.type==='restaurant'?(C.name.replace(/\s+(restaurant|bar|cafe|grill|lounge)\b.*$/i,'').trim()||C.name):C.name;
 const T={
- restaurant:{pill:'Fresh food in '+C.town,h1:'Fresh flavours by the ocean in '+C.town,lead:'Seafood, grills and Swahili favourites cooked to order. Reserve a table or order ahead in one message.',offerTitle:'From our kitchen',offerSub:'A taste of the menu. Full menu available on WhatsApp.',hours:'Monday to Sunday<br>10:00 am to 11:00 pm',wa:'Hi, I would like to book a table at ',
-  items:[['Signature','Grilled Catch of the Day','With coconut rice and kachumbari','KES 1,200'],['Swahili','Chicken Biryani','Slow cooked with fragrant spices','KES 900'],['From the grill','Mixed Seafood Platter','Prawns, calamari and fish for two','KES 3,200'],['Drinks','Fresh Juices and Cocktails','Mango, passion and dawa','From KES 300']]},
- salon:{pill:'Hair, nails and beauty in '+C.town,h1:'Look and feel your best in '+C.town,lead:'Braids, nails, facials and grooming by a team our clients trust. Book your slot in one WhatsApp message.',offerTitle:'Our services',offerSub:'Popular treatments and starting prices.',hours:'Monday to Saturday<br>8:00 am to 8:00 pm<br>Sunday 10:00 am to 6:00 pm',wa:'Hi, I would like to book an appointment at ',
-  items:[['Hair','Braids and Styling','Knotless, cornrows and more','From KES 1,500'],['Nails','Gel Manicure and Pedicure','Long lasting shine','From KES 1,000'],['Skin','Facials and Waxing','Glow treatments for every skin','From KES 1,200'],['Grooming','Haircut and Beard','Clean cuts for men and kids','From KES 300']]},
- guesthouse:{pill:'Your stay in '+C.town,h1:'A peaceful stay in '+C.town+', booked directly',lead:'Clean rooms, warm hosts and the beach nearby. Book directly with us on WhatsApp for our best rate.',offerTitle:'Rooms and rates',offerSub:'Best price when you book direct.',hours:'Check in from 2:00 pm<br>Check out by 10:00 am<br>Reception open 24 hours',wa:'Hi, I would like to check room availability at ',
-  items:[['Standard','Double Room','Air conditioning, Wi-Fi, private bathroom','From KES 3,500 / night'],['Family','Family Room','Space for four with garden view','From KES 6,000 / night'],['Extras','Breakfast and Airport Pickup','Ask us when you book','On request'],['Experiences','Tours and Excursions','Snorkelling, safaris and boat trips','On request']]}
-};
-const D=T[C.type]||T.restaurant;const wa='https://wa.me/'+C.phone+'?text='+encodeURIComponent(D.wa+C.name);
-document.body.className=C.type;document.title=C.name+' | '+C.town;
+restaurant:{
+ hero:'photo-1559339352-11d035aa65de',ribbonWord:'restaurant',
+ eyebrow:`Coastal kitchen · ${C.town}`,
+ h1:`Fresh from the ocean, <em>served by the sea.</em>`,
+ lead:`Grilled seafood, Swahili classics and sundowner cocktails at ${C.name}. Reserve your table in one message.`,
+ waTxt:'Reserve a table',second:'View the menu',nav:'Book a table',links:['About','Menu','Gallery','Reviews','Visit'],
+ hours:[['Monday','10:00 – 23:00'],['Tuesday','10:00 – 23:00'],['Wednesday','10:00 – 23:00'],['Thursday','10:00 – 23:00'],['Friday','10:00 – 00:00'],['Saturday','10:00 – 00:00'],['Sunday','10:00 – 23:00']],open:[10,23],
+ s:['photo-1414235077428-338989a2e8c0','photo-1565680018434-b513d5e5fd47'],
+ aboutK:'Our story',aboutH:`Where ${C.town} comes <em>to eat.</em>`,
+ aboutP:`Loved by locals and travellers alike, with ${C.count.toLocaleString()} Google reviews and counting. We cook with the morning's catch, coastal spices and a lot of heart, then serve it with an ocean breeze and the best sunset on the coast.`,
+ feats:[['Daily catch','Fresh from local fishermen'],['Swahili recipes','Coconut, tamarind & pilipili'],['Sundowners','Cocktails & cold Tusker'],['Groups welcome','Birthdays, families & events']],
+ menuK:'The menu',menuH:'A taste of <em>the coast</em>',menuP:'A few favourites. Ask us on WhatsApp for today\'s specials and the full menu.',
+ tabs:{'Signatures':[['photo-1565680018434-b513d5e5fd47','Grilled Tiger Prawns','Garlic butter, lime, pilipili','KES 1,850'],['photo-1559847844-5315695dadae','Swahili Prawn Curry','Coconut, tamarind, pilau rice','KES 1,450'],['photo-1519708227418-c8fd9a32b7a2','Catch of the Day','Charcoal grilled, kachumbari','KES 1,300'],['photo-1563379926898-05f4575a45d8','Seafood Spaghetti','Prawns, calamari, tomato & chilli','KES 1,250']],
+  'Grill':[['photo-1600891964092-4316c288032e','Beef Steak & Chips','Peppercorn sauce, masala fries','KES 1,600'],['photo-1610057099443-fde8c4d50f91','Peri Peri Chicken','Half bird, greens & ugali','KES 1,100'],['photo-1565299624946-b28f40a0ae38','Wood Fired Pizza','Mozzarella, peppers, red onion','KES 1,050'],['photo-1504674900247-0877df9cc836','Sharing Platter','Grilled meats, salads, dips','KES 3,200']],
+  'Drinks':[['photo-1551024709-8f23befc6f87','Signature Cocktails','Dawa, mojito, passion margarita','KES 650'],['photo-1514362545857-3bc16c4c7d1b','Sundowner Specials','Hand made with fresh fruit','KES 750'],['photo-1534766555764-ce878a5e3a2b','Desserts','Chocolate cake, mango sorbet','KES 450'],['photo-1514933651103-005eec06c04b','Cold Beers','Tusker, White Cap & more','KES 350']]},
+ galH:'Good food, <em>golden hours</em>',galP:'The view, the plates, the people. Come see for yourself.',
+ gal:['photo-1559339352-11d035aa65de','photo-1565680018434-b513d5e5fd47','photo-1551024709-8f23befc6f87','photo-1519046904884-53103b34b206','photo-1559847844-5315695dadae','photo-1514933651103-005eec06c04b'],
+ reviews:['The prawns were the best we had on the whole trip. Great vibe and friendly staff.','Perfect spot for sunset drinks. We came back three nights in a row!','Fresh seafood, fair prices and amazing service. A must visit in '+C.town+'.','Lovely atmosphere, the Swahili curry was incredible. Highly recommend.','Our favourite place on the coast. The team made our anniversary special.'],
+ bookImg:'photo-1414235077428-338989a2e8c0',bookCap:'Your table by the ocean is waiting.',bookK:'Reservations',bookH:'Book your table',bookSub:'Tell us when you are coming and we will have everything ready.',bookBtn:'Reserve on WhatsApp',
+ fields:[['Your name','name','text',1],['Date','date','date'],['Time','time','time'],['Guests','guests','select',0,['2 people','3 people','4 people','5 to 8 people','Large group']],['Occasion','occ','select',0,['Just dinner','Birthday','Anniversary','Business','Sundowners']]],
+ msg:v=>`Hi ${C.name}, I'd like to book a table.\nName: ${v.name||''}\nDate: ${v.date||''}\nTime: ${v.time||''}\nGuests: ${v.guests}\nOccasion: ${v.occ}`,
+ visitH:'Find us <em>by the water</em>',fbig:`See you at <em>${short}.</em>`
+},
+salon:{
+ hero:'photo-1633681926022-84c23e8cb2d6',
+ eyebrow:`Hair · Nails · Beauty · ${C.town}`,
+ h1:`Where ${C.town} comes <em>to glow.</em>`,
+ lead:`Braids, colour, nails, facials and massage by the hands our clients trust at ${C.name}. Book your slot in one message.`,
+ waTxt:'Book appointment',second:'See services & prices',nav:'Book now',links:['About','Services','Gallery','Reviews','Visit'],
+ hours:[['Monday','08:00 – 20:00'],['Tuesday','08:00 – 20:00'],['Wednesday','08:00 – 20:00'],['Thursday','08:00 – 20:00'],['Friday','08:00 – 20:00'],['Saturday','08:00 – 21:00'],['Sunday','10:00 – 18:00']],open:[8,20],
+ s:['photo-1562322140-8baeececf3df','photo-1632345031435-8727f6897d53'],
+ aboutK:'About us',aboutH:`Beauty, done <em>beautifully.</em>`,
+ aboutP:`At ${C.name} every visit is a little escape. Clean tools, quality products, a calm space and stylists who listen. That is why our clients keep coming back and why they rate us ${C.rating} stars.`,
+ feats:[['Expert stylists','Braids, natural hair & colour'],['Hygiene first','Sterilised tools, every client'],['Premium products','Gentle on hair & skin'],['Bridal & events','Glam for your big day']],
+ menuK:'Services',menuH:'Our <em>treatments</em>',menuP:'Starting prices. Ask us on WhatsApp for a quote on your exact style.',
+ tabs:{'Hair':[['photo-1562322140-8baeececf3df','Knotless Braids','Medium length, any colour','From KES 2,500'],['photo-1595476108010-b4d1f102b1b1','Wash & Blow Dry','Treatment, styling & finish','From KES 800'],['photo-1522337360788-8b13dee7a37e','Silk Press & Colour','Healthy shine, expert colour','From KES 2,000'],['photo-1600948836101-f9ffda59d250','Men\'s Cut & Beard','Sharp fade, clean line up','From KES 400']],
+  'Nails':[['photo-1632345031435-8727f6897d53','Gel Manicure','Shape, cuticle care & gel','From KES 1,200'],['photo-1604654894610-df63bc536371','Acrylic & Nail Art','Custom designs, any length','From KES 2,000'],['photo-1590439471364-192aa70c0b53','Spa Pedicure','Soak, scrub, massage & polish','From KES 1,300'],['photo-1521590832167-7bcbfaa6381f','Lash Extensions','Classic, hybrid or volume','From KES 2,500']],
+  'Spa':[['photo-1570172619644-dfd03ed5d881','Signature Facial','Deep cleanse & glow mask','From KES 2,500'],['photo-1544161515-4ab6ce6db874','Full Body Massage','60 minutes of pure calm','From KES 3,000'],['photo-1600334129128-685c5582fd35','Hot Stone Therapy','Melts tension away','From KES 3,500'],['photo-1590439471364-192aa70c0b53','Waxing','Smooth, quick & gentle','From KES 600']]},
+ galH:'Our work <em>speaks</em>',galP:'Real styles, real smiles. Follow along for daily looks.',
+ gal:['photo-1633681926022-84c23e8cb2d6','photo-1632345031435-8727f6897d53','photo-1570172619644-dfd03ed5d881','photo-1562322140-8baeececf3df','photo-1544161515-4ab6ce6db874','photo-1604654894610-df63bc536371'],
+ reviews:['Best braids I have ever had, neat, quick and they lasted weeks!','So clean and relaxing. My nails came out perfect.','Friendly team and great prices. My go to salon in '+C.town+'.','The facial was amazing, my skin is glowing. Booking again!','They did my bridal hair and makeup, I felt like a queen.'],
+ bookImg:'photo-1600334129128-685c5582fd35',bookCap:'Your hour of calm starts here.',bookK:'Appointments',bookH:'Book your slot',bookSub:'Choose a service and time, we will confirm on WhatsApp.',bookBtn:'Book on WhatsApp',
+ fields:[['Your name','name','text',1],['Service','svc','select',0,['Braids','Wash & blow dry','Nails','Pedicure','Facial','Massage','Lashes','Other']],['Date','date','date'],['Time','time','time']],
+ msg:v=>`Hi ${C.name}, I'd like to book an appointment.\nName: ${v.name||''}\nService: ${v.svc}\nDate: ${v.date||''}\nTime: ${v.time||''}`,
+ visitH:'Come <em>see us</em>',fbig:`Book your glow at <em>${short}.</em>`
+},
+guesthouse:{
+ hero:'photo-1499793983690-e29da59ef1c2',
+ eyebrow:`Stay in ${C.town}`,
+ h1:`Slow days, <em>salt air,</em> and a place to call home.`,
+ lead:`Calm rooms a short walk from the ocean at ${C.name}. Book direct on WhatsApp for our best rate, no booking fees.`,
+ waTxt:'Check availability',second:'See our rooms',nav:'Book direct',links:['About','Rooms','Gallery','Reviews','Visit'],
+ hours:[['Check in','From 14:00'],['Check out','By 10:00'],['Reception','24 hours'],['Breakfast','07:00 – 10:30'],['Airport pickup','On request'],['Tours','Daily']],open:[0,24],
+ s:['photo-1611892440504-42a792e24d32','photo-1506953823976-52e1fdc0149a'],
+ aboutK:'Welcome',aboutH:`Your home on <em>the coast.</em>`,
+ aboutP:`${C.name} is a small, friendly place with big hospitality. Wake up to birdsong, walk to the beach, and let us arrange your tours, transfers and meals. ${C.count.toLocaleString()} guests have reviewed us on Google with ${C.rating} stars.`,
+ feats:[['Best rate direct','No booking site fees'],['Near the beach','A short walk to the ocean'],['Free Wi-Fi','Fast and reliable'],['Local hosts','Tips, tours & transfers']],
+ menuK:'Rooms',menuH:'Rooms & <em>rates</em>',menuP:'All rooms include Wi-Fi, fresh linen and daily housekeeping. Book direct to save.',
+ rooms:[['photo-1611892440504-42a792e24d32','Garden Double','Queen bed, garden view, private bathroom',['AC','Wi-Fi','Breakfast'],'KES 4,500'],['photo-1590490360182-c33d57733427','Deluxe Suite','King bed, lounge area, balcony',['AC','Balcony','Smart TV'],'KES 7,500'],['photo-1631049552057-403cdb8f0658','Family Room','Space for four, two beds',['Sleeps 4','Kitchenette','Wi-Fi'],'KES 9,000']],
+ galH:'Life <em>at our place</em>',galP:'Pool days, ocean walks and golden evenings.',
+ gal:['photo-1520250497591-112f2f40a3f4','photo-1507525428034-b723cf961d3e','photo-1611892440504-42a792e24d32','photo-1506953823976-52e1fdc0149a','photo-1544551763-46a013bb70d5','photo-1615529182904-14819c35db37'],
+ reviews:['Spotless rooms and the warmest hosts. Felt like family.','Great value, close to the beach and breakfast was delicious.','They organised our snorkelling trip and airport pickup. So easy!','Peaceful, clean and safe. We will be back next year.','Better than the big hotels. Booking direct saved us money too.'],
+ bookImg:'photo-1507525428034-b723cf961d3e',bookCap:'Book direct and save up to 15%.',bookK:'Book direct',bookH:'Check availability',bookSub:'Send your dates and we will reply with the best rate.',bookBtn:'Check on WhatsApp',
+ fields:[['Your name','name','text',1],['Check in','in','date'],['Check out','out','date'],['Guests','guests','select',0,['1 guest','2 guests','3 guests','4 guests','5+ guests']],['Room','room','select',0,['Garden Double','Deluxe Suite','Family Room','Not sure yet']]],
+ msg:v=>`Hi ${C.name}, I'd like to check availability.\nName: ${v.name||''}\nCheck in: ${v.in||''}\nCheck out: ${v.out||''}\nGuests: ${v.guests}\nRoom: ${v.room}`,
+ visitH:'Getting <em>here</em>',fbig:`Stay with us at <em>${short}.</em>`
+}};
+const D=T[C.type]||T.restaurant;
+document.body.className=C.type==='restaurant'?'':C.type;
+document.title=`${C.name} | ${C.town}`;
 const $=id=>document.getElementById(id);
-$('bar').textContent='Rated '+C.rating+' stars by '+C.count+' people on Google';
-$('logo').textContent=C.name;$('pill').textContent=D.pill;$('h1').textContent=D.h1;$('lead').textContent=D.lead;
-$('rating').textContent=C.rating+' ★★★★★';$('ratingtxt').textContent='from '+C.count+' Google reviews';
-['navwa','herowa','floatwa'].forEach(i=>$(i).href=wa);$('call').href='tel:+'+C.phone;
-$('demoname').textContent=C.name;$('offerTitle').textContent=D.offerTitle;$('offerSub').textContent=D.offerSub;
-$('offers').innerHTML=D.items.map(i=>`<div class="card"><div class="ph"></div><div class="tag">${i[0]}</div><h3>${i[1]}</h3><p class="sub" style="margin:0">${i[2]}</p><div class="price">${i[3]}</div></div>`).join('');
-$('revsub').textContent=C.rating+' out of 5 from '+C.count+' reviews on Google. Your real reviews will appear here.';
-$('reviews').innerHTML=['Amazing service and great value. We will definitely be back!','The team made us feel at home. Highly recommended in '+C.town+'.','Best experience we had on our trip. Thank you!'].map(t=>`<div class="card"><div style="color:#e8a317">★★★★★</div><p>"${t}"</p><div class="who">Sample review</div></div>`).join('');
-$('findsub').textContent=C.name+', '+C.town+', Kenya';$('hours').innerHTML=D.hours;
-$('contact').innerHTML='+'+C.phone+'<br>WhatsApp available';
-const mq=encodeURIComponent(C.name+' '+C.town+' Kenya');$('map').src='https://maps.google.com/maps?q='+mq+'&output=embed';$('dir').href='https://www.google.com/maps/search/?api=1&query='+mq;
-$('foot').innerHTML='© '+new Date().getFullYear()+' '+C.name+' · Website by <a href="https://tekshove.com" style="color:inherit"><b>TekShove</b></a>';
+const wa=t=>`https://wa.me/${C.phone}?text=${encodeURIComponent(t)}`;
+const hello=wa(`Hi ${C.name}, I found you online and would like to ${C.type==='salon'?'book an appointment':C.type==='guesthouse'?'check room availability':'book a table'}.`);
+$('ribbon').innerHTML=innerWidth<600?`Free preview for <b>${C.name}</b> · by TekShove`:`Free website preview designed for <b>${C.name}</b> by TekShove`;
+$('brand').textContent=C.name;
+$('links').innerHTML=D.links.map((l,i)=>`<a href="#${['about','menu','gallery','reviews','visit'][i]}">${l}</a>`).join('');
+$('navBook').textContent=D.nav;
+$('heroImg').style.backgroundImage=`url(${U(D.hero,2000)})`;
+$('eyebrow').textContent=D.eyebrow;$('h1').innerHTML=D.h1;$('lead').textContent=D.lead;
+['heroWa','waFloat','mWa'].forEach(i=>$(i).href=hello);$('heroWaTxt').textContent=D.waTxt;$('mWaTxt').textContent=D.waTxt;
+$('heroSecond').textContent=D.second;
+$('mRating').textContent=C.rating;$('mCount').textContent=C.count.toLocaleString();
+const h=new Date().getHours();const isOpen=h>=D.open[0]&&h<D.open[1];$('mOpen').textContent=isOpen?'Open now':'Opens soon';$('mHours').textContent=C.type==='guesthouse'?'Reception 24 hours':'Today '+D.hours[(new Date().getDay()+6)%7][1];
+$('s1').src=U(D.s[0],900,1100);$('s2').src=U(D.s[1],600,600);
+$('aboutK').textContent=D.aboutK;$('aboutH').innerHTML=D.aboutH;$('aboutP').textContent=D.aboutP;
+$('feats').innerHTML=D.feats.map(f=>`<div class="feat"><b>${f[0]}</b><span>${f[1]}</span></div>`).join('');
+$('menuK').textContent=D.menuK;$('menuH').innerHTML=D.menuH;$('menuP').textContent=D.menuP;
+if(D.rooms){$('tabs').remove();$('menuBody').innerHTML=`<div class="rooms">${D.rooms.map(r=>`<div class="room rv"><div class="ph"><img src="${U(r[0],900,675)}" alt="${r[1]}" loading="lazy"></div><div class="bd"><h4>${r[1]}</h4><p>${r[2]}</p><div class="tags">${r[3].map(t=>`<span>${t}</span>`).join('')}</div><div class="row"><span class="rate">${r[4]} <small>/ night</small></span><a class="pillbtn" style="padding:10px 18px;font-size:13.5px" target="_blank" href="${wa(`Hi ${C.name}, is the ${r[1]} available?`)}">Book</a></div></div></div>`).join('')}</div>`;}
+else{const names=Object.keys(D.tabs);const draw=n=>{$('menuBody').innerHTML=`<div class="menu-grid">${D.tabs[n].map((it,i)=>`<div class="item" style="animation-delay:${i*70}ms"><img src="${U(it[0],200,200)}" alt="${it[1]}" loading="lazy"><div><h4>${it[1]}</h4><p>${it[2]}</p></div><div class="price">${it[3]}</div></div>`).join('')}</div>`;[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.n===n));};
+ $('tabs').innerHTML=names.map(n=>`<button class="tab" type="button" data-n="${n}">${n}</button>`).join('');$('tabs').onclick=e=>{if(e.target.dataset.n)draw(e.target.dataset.n)};draw(names[0]);}
+$('galH').innerHTML=D.galH;$('galP').textContent=D.galP;
+$('gal').innerHTML=D.gal.slice(0,5).map((g,i)=>`<figure><img src="${U(g,i===0?1200:700,i===0?900:600)}" alt="" loading="lazy"></figure>`).join('');
+$('rBig').textContent=C.rating;$('rTxt').textContent=`Based on ${C.count.toLocaleString()} Google reviews`;
+const initials=['AM','JK','SW','LO','RN'],names=['Amina','James','Sarah','Lucas','Rehema'];
+const cards=D.reviews.map((r,i)=>`<div class="rcard"><div class="stars">★★★★★</div><p>“${r}”</p><div class="who"><div class="av">${initials[i]}</div>${names[i]} · Sample review</div></div>`).join('');
+$('marq').innerHTML=cards+cards;
+$('bookImg').style.backgroundImage=`url(${U(D.bookImg,1200)})`;$('bookCap').textContent=D.bookCap;
+$('bookK').textContent=D.bookK;$('bookH').textContent=D.bookH;$('bookSub').textContent=D.bookSub;$('bookBtn').textContent=D.bookBtn;
+$('fields').innerHTML=D.fields.map(f=>`<div class="field${f[3]?' full':''}"><label>${f[0]}</label>${f[2]==='select'?`<select name="${f[1]}">${f[4].map(o=>`<option>${o}</option>`).join('')}</select>`:`<input name="${f[1]}" type="${f[2]}" ${f[2]==='text'?'placeholder="Your full name"':''}>`}</div>`).join('');
+$('form').onsubmit=e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.target));window.open(wa(D.msg(v)),'_blank');};
+$('visitH').innerHTML=D.visitH;
+const today=(new Date().getDay()+6)%7;
+$('hours').innerHTML=D.hours.map((r,i)=>`<tr class="${C.type!=='guesthouse'&&i===today?'today':''}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+$('contact').innerHTML=`+${C.phone.replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/,'$1 $2 $3 $4')}<br>WhatsApp, calls & walk ins welcome<br>${C.town}, Kenya`;
+const mq=encodeURIComponent(C.name+' '+C.town+' Kenya');
+$('map').src=`https://maps.google.com/maps?q=${mq}&output=embed`;
+$('dir').href=$('mDir').href=`https://www.google.com/maps/search/?api=1&query=${mq}`;
+$('mCall').href=`tel:+${C.phone}`;
+$('fbig').innerHTML=D.fbig;$('fcopy').textContent=`© ${new Date().getFullYear()} ${C.name}. All rights reserved.`;
+const nav=$('nav');addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),4000);
 </script>
 </body>
 </html>
