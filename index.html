@@ -15,6 +15,7 @@
 <style>
 :root{--bg:#0e0d0b;--bg2:#17150f;--ink:#f4ede1;--muted:#b3a993;--accent:#e2a64b;--accent-ink:#1a1206;--line:rgba(244,237,225,.14);--card:rgba(255,255,255,.04);--display:'Fraunces',serif;--body:'Manrope',system-ui,sans-serif;--radius:22px}
 body.salon{--bg:#f7efe9;--bg2:#efe3da;--ink:#2a1622;--muted:#7d6670;--accent:#8c3b5e;--accent-ink:#fff;--line:rgba(42,22,34,.12);--card:#fffaf6;--display:'Cormorant Garamond',serif}
+body.tour{--bg:#f2f6f7;--bg2:#e2ecee;--ink:#0b2433;--muted:#4f6a76;--accent:#ff6b4a;--accent-ink:#fff;--line:rgba(11,36,51,.12);--card:#fff;--display:'DM Serif Display',serif}
 body.guesthouse{--bg:#f4efe6;--bg2:#e9e1d2;--ink:#132a2e;--muted:#5f716f;--accent:#0f6e6a;--accent-ink:#fff;--line:rgba(19,42,46,.12);--card:#fffdf8;--display:'DM Serif Display',serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -47,7 +48,8 @@ nav.solid .links a{color:var(--ink)}
 .eyebrow:before{content:"";width:34px;height:1.5px;background:var(--accent)}
 .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,8.5vw,112px);line-height:.95;letter-spacing:-.02em;max-width:900px}
 .hero h1 em{font-style:italic;color:var(--accent)}
-body.salon .hero h1 em,body.guesthouse .hero h1 em{color:#ffd9a8}
+body.salon .hero h1 em,body.guesthouse .hero h1 em,body.tour .hero h1 em{color:#ffd9a8}
+body.tour .hero h1{font-size:clamp(42px,6.8vw,90px);line-height:1}
 body.guesthouse .hero h1{font-size:clamp(42px,6.6vw,86px);line-height:1}
 .hero p.lead{font-size:clamp(16px,2vw,19px);max-width:540px;margin:24px 0 32px;color:rgba(255,255,255,.88)}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
@@ -294,6 +296,8 @@ footer{padding:70px 0 120px;border-top:1px solid var(--line)}
 <script>
 const q=new URLSearchParams(location.search);
 const C={name:(q.get('n')||'Havana Restaurant Diani').trim(),town:q.get('t')||'Diani Beach',type:(q.get('type')||'restaurant').toLowerCase(),rating:q.get('r')||'4.6',count:+(q.get('c')||120),phone:(q.get('p')||'254700000000').replace(/\D/g,'')};
+const CC=C.phone.startsWith('501')?'bz':(/^1(876|658)/.test(C.phone)?'jm':'ke');const CN={ke:'Kenya',bz:'Belize',jm:'Jamaica'}[CC];const ADJ={ke:'Swahili',bz:'Belizean',jm:'Jamaican'}[CC];const BEER={ke:'Tusker',bz:'Belikin',jm:'Red Stripe'}[CC];
+const PR=s=>CC==='ke'?s:String(s).replace(/KES ([\d,]+)/g,(m,n)=>'US$'+Math.max(2,Math.round(+n.replace(/,/g,'')/100)));
 const U=(id,w=1400,h)=>`https://images.unsplash.com/${id}?w=${w}${h?'&h='+h+'&fit=crop':''}&q=72&auto=format`;
 const short=C.type==='restaurant'?(C.name.replace(/\s+(restaurant|bar|cafe|grill|lounge)\b.*$/i,'').trim()||C.name):C.name;
 const T={
@@ -363,13 +367,44 @@ guesthouse:{
  fields:[['Your name','name','text',1],['Check in','in','date'],['Check out','out','date'],['Guests','guests','select',0,['1 guest','2 guests','3 guests','4 guests','5+ guests']],['Room','room','select',0,['Garden Double','Deluxe Suite','Family Room','Not sure yet']]],
  msg:v=>`Hi ${C.name}, I'd like to check availability.\nName: ${v.name||''}\nCheck in: ${v.in||''}\nCheck out: ${v.out||''}\nGuests: ${v.guests}\nRoom: ${v.room}`,
  visitH:'Getting <em>here</em>',fbig:`Stay with us at <em>${short}.</em>`
+},
+tour:{
+ hero:'photo-1506929562872-bb421503ef21',
+ eyebrow:`Tours & adventures · ${C.town}`,
+ h1:`Reef, ruins & <em>real adventure.</em>`,
+ lead:`Snorkel the reef, swim with turtles and explore ancient ruins with ${C.name}. Small groups, local guides, book in one message.`,
+ waTxt:'Book a tour',second:'See our tours',nav:'Book a tour',links:['About','Tours','Gallery','Reviews','Visit'],
+ hours:[['Snorkel trips','Daily · 9:00 & 14:00'],['Sunset cruise','Daily · 17:00'],['Ruins & jungle','Mon to Sat · 7:30'],['Private charters','On request'],['Hotel pickup','Included'],['Office','7:00 – 19:00']],open:[7,19],
+ s:['photo-1544551763-46a013bb70d5','photo-1437622368342-7a3d73a34c8f'],
+ aboutK:'Why travel with us',aboutH:`Local guides, <em>unforgettable days.</em>`,
+ aboutP:`${C.name} has shown visitors the best of ${C.town} for years, rated ${C.rating} stars by ${C.count.toLocaleString()} travellers on Google. We keep groups small, gear clean and safety first, so you can just enjoy the water.`,
+ feats:[['Small groups','Never crowded, always personal'],['Certified guides','Safety & first aid trained'],['Gear included','Masks, fins & life vests'],['Free pickup','From your hotel or dock']],
+ menuK:'Tours',menuH:'Pick your <em>adventure</em>',menuP:'Prices per person. Private trips and group deals on WhatsApp.',
+ rooms:[['photo-1546026423-cc4642628d2b','Reef Snorkel Trip','Half day · coral gardens, nurse sharks & rays',['Half day','Gear included','Snacks'],'KES 7,500','person'],['photo-1437622368342-7a3d73a34c8f','Turtle & Shark Ray Alley','Full day · two snorkel stops, lunch on the beach',['Full day','Lunch','Drinks'],'KES 12,500','person'],['photo-1518638150340-f706e86654de','Mayan Ruins & Jungle','Full day · ruins, river & local lunch',['Full day','Guide','Transport'],'KES 14,500','person']],
+ galH:'Moments <em>on the water</em>',galP:'Real trips, real smiles. This could be your day.',
+ gal:['photo-1506929562872-bb421503ef21','photo-1437622368342-7a3d73a34c8f','photo-1583212292454-1fe6229603b7','photo-1544551763-46a013bb70d5','photo-1535262412227-85541e910204'],
+ reviews:['Best day of our trip! We swam with turtles and our guide was amazing.','Small group, great snacks and the reef was stunning. Book them!','Professional, safe and so much fun. Perfect for families.','The ruins tour was incredible, our guide knew so much history.','Easy to book on WhatsApp and they picked us up right on time.'],
+ bookImg:'photo-1500514966906-fe245eea9344',bookCap:'Your best day in '+C.town+' starts here.',bookK:'Bookings',bookH:'Book your tour',bookSub:'Choose a trip and date, we will confirm on WhatsApp.',bookBtn:'Book on WhatsApp',
+ fields:[['Your name','name','text',1],['Tour','tour','select',0,['Reef Snorkel Trip','Turtle & Shark Ray Alley','Mayan Ruins & Jungle','Sunset Cruise','Private Charter']],['Date','date','date'],['Guests','guests','select',0,['1 person','2 people','3 people','4 people','5+ people']]],
+ msg:v=>`Hi ${C.name}, I'd like to book a tour.\nName: ${v.name||''}\nTour: ${v.tour}\nDate: ${v.date||''}\nGuests: ${v.guests}`,
+ visitH:'Meet us <em>at the dock</em>',fbig:`Adventure awaits with <em>${short}.</em>`
 }};
+if(CC!=='ke'){Object.assign(T.restaurant,{
+ eyebrow:`Caribbean kitchen · ${C.town}`,
+ lead:`Fresh seafood, ${ADJ} classics and rum punch by the water at ${C.name}. Reserve your table in one message.`,
+ feats:[['Daily catch','Fresh from local fishermen'],[`${ADJ} recipes`,'Rice & beans, stew chicken, ceviche'],['Sundowners',`Rum punch & cold ${BEER}`],['Groups welcome','Birthdays, families & events']],
+ tabs:{'Signatures':[['photo-1565680018434-b513d5e5fd47','Grilled Lobster Tail','Garlic butter, lime, coconut rice','KES 3,200'],['photo-1559847844-5315695dadae','Coconut Shrimp Curry','Coconut, island spices, rice','KES 1,900'],['photo-1519708227418-c8fd9a32b7a2','Catch of the Day','Blackened or grilled, plantains','KES 2,200'],['photo-1563379926898-05f4575a45d8','Seafood Pasta','Shrimp, conch, tomato & chilli','KES 2,000']],
+  'Island Plates':[['photo-1610057099443-fde8c4d50f91','Stew Chicken','Rice & beans, potato salad','KES 1,400'],['photo-1600891964092-4316c288032e','Grilled Steak','Peppercorn sauce, fries','KES 2,800'],['photo-1565299624946-b28f40a0ae38','Wood Fired Pizza','Mozzarella, peppers, red onion','KES 1,600'],['photo-1504674900247-0877df9cc836','Fry Jack Breakfast','Eggs, beans, bacon & fry jacks','KES 1,200']],
+  'Drinks':[['photo-1551024709-8f23befc6f87','Rum Punch','House recipe, fresh fruit','KES 800'],['photo-1514362545857-3bc16c4c7d1b','Signature Cocktails','Mojito, margarita, piña colada','KES 900'],['photo-1534766555764-ce878a5e3a2b','Desserts','Coconut pie, key lime cake','KES 700'],['photo-1514933651103-005eec06c04b','Cold Beers',`${BEER} & more`,'KES 500']]},
+ reviews:['The lobster was the best we had on the whole trip. Great vibe and friendly staff.','Perfect spot for sunset drinks. We came back three nights in a row!','Fresh seafood, fair prices and amazing service. A must visit in '+C.town+'.','Lovely atmosphere, the coconut curry was incredible. Highly recommend.','Our favourite place on the island. The team made our anniversary special.']});
+ T.salon.tabs.Hair[0][1]='Braids & Styling';
+}
 const D=T[C.type]||T.restaurant;
 document.body.className=C.type==='restaurant'?'':C.type;
 document.title=`${C.name} | ${C.town}`;
 const $=id=>document.getElementById(id);
 const wa=t=>`https://wa.me/${C.phone}?text=${encodeURIComponent(t)}`;
-const hello=wa(`Hi ${C.name}, I found you online and would like to ${C.type==='salon'?'book an appointment':C.type==='guesthouse'?'check room availability':'book a table'}.`);
+const hello=wa(`Hi ${C.name}, I found you online and would like to ${C.type==='salon'?'book an appointment':C.type==='guesthouse'?'check room availability':C.type==='tour'?'book a tour':'book a table'}.`);
 $('ribbon').innerHTML=innerWidth<600?`Free preview for <b>${C.name}</b> · by TekShove`:`Free website preview designed for <b>${C.name}</b> by TekShove`;
 $('brand').textContent=C.name;
 $('links').innerHTML=D.links.map((l,i)=>`<a href="#${['about','menu','gallery','reviews','visit'][i]}">${l}</a>`).join('');
@@ -379,18 +414,18 @@ $('eyebrow').textContent=D.eyebrow;$('h1').innerHTML=D.h1;$('lead').textContent=
 ['heroWa','waFloat','mWa'].forEach(i=>$(i).href=hello);$('heroWaTxt').textContent=D.waTxt;$('mWaTxt').textContent=D.waTxt;
 $('heroSecond').textContent=D.second;
 $('mRating').textContent=C.rating;$('mCount').textContent=C.count.toLocaleString();
-const h=new Date().getHours();const isOpen=h>=D.open[0]&&h<D.open[1];$('mOpen').textContent=isOpen?'Open now':'Opens soon';$('mHours').textContent=C.type==='guesthouse'?'Reception 24 hours':'Today '+D.hours[(new Date().getDay()+6)%7][1];
+const h=new Date().getHours();const isOpen=h>=D.open[0]&&h<D.open[1];$('mOpen').textContent=isOpen?'Open now':'Opens soon';$('mHours').textContent=C.type==='guesthouse'?'Reception 24 hours':C.type==='tour'?'Trips daily':'Today '+D.hours[(new Date().getDay()+6)%7][1];
 $('s1').src=U(D.s[0],900,1100);$('s2').src=U(D.s[1],600,600);
 $('aboutK').textContent=D.aboutK;$('aboutH').innerHTML=D.aboutH;$('aboutP').textContent=D.aboutP;
 $('feats').innerHTML=D.feats.map(f=>`<div class="feat"><b>${f[0]}</b><span>${f[1]}</span></div>`).join('');
 $('menuK').textContent=D.menuK;$('menuH').innerHTML=D.menuH;$('menuP').textContent=D.menuP;
-if(D.rooms){$('tabs').remove();$('menuBody').innerHTML=`<div class="rooms">${D.rooms.map(r=>`<div class="room rv"><div class="ph"><img src="${U(r[0],900,675)}" alt="${r[1]}" loading="lazy"></div><div class="bd"><h4>${r[1]}</h4><p>${r[2]}</p><div class="tags">${r[3].map(t=>`<span>${t}</span>`).join('')}</div><div class="row"><span class="rate">${r[4]} <small>/ night</small></span><a class="pillbtn" style="padding:10px 18px;font-size:13.5px" target="_blank" href="${wa(`Hi ${C.name}, is the ${r[1]} available?`)}">Book</a></div></div></div>`).join('')}</div>`;}
-else{const names=Object.keys(D.tabs);const draw=n=>{$('menuBody').innerHTML=`<div class="menu-grid">${D.tabs[n].map((it,i)=>`<div class="item" style="animation-delay:${i*70}ms"><img src="${U(it[0],200,200)}" alt="${it[1]}" loading="lazy"><div><h4>${it[1]}</h4><p>${it[2]}</p></div><div class="price">${it[3]}</div></div>`).join('')}</div>`;[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.n===n));};
+if(D.rooms){$('tabs').remove();$('menuBody').innerHTML=`<div class="rooms">${D.rooms.map(r=>`<div class="room rv"><div class="ph"><img src="${U(r[0],900,675)}" alt="${r[1]}" loading="lazy"></div><div class="bd"><h4>${r[1]}</h4><p>${r[2]}</p><div class="tags">${r[3].map(t=>`<span>${t}</span>`).join('')}</div><div class="row"><span class="rate">${PR(r[4])} <small>/ ${r[5]||'night'}</small></span><a class="pillbtn" style="padding:10px 18px;font-size:13.5px" target="_blank" href="${wa(`Hi ${C.name}, is the ${r[1]} available?`)}">Book</a></div></div></div>`).join('')}</div>`;}
+else{const names=Object.keys(D.tabs);const draw=n=>{$('menuBody').innerHTML=`<div class="menu-grid">${D.tabs[n].map((it,i)=>`<div class="item" style="animation-delay:${i*70}ms"><img src="${U(it[0],200,200)}" alt="${it[1]}" loading="lazy"><div><h4>${it[1]}</h4><p>${it[2]}</p></div><div class="price">${PR(it[3])}</div></div>`).join('')}</div>`;[...$('tabs').children].forEach(b=>b.classList.toggle('on',b.dataset.n===n));};
  $('tabs').innerHTML=names.map(n=>`<button class="tab" type="button" data-n="${n}">${n}</button>`).join('');$('tabs').onclick=e=>{if(e.target.dataset.n)draw(e.target.dataset.n)};draw(names[0]);}
 $('galH').innerHTML=D.galH;$('galP').textContent=D.galP;
 $('gal').innerHTML=D.gal.slice(0,5).map((g,i)=>`<figure><img src="${U(g,i===0?1200:700,i===0?900:600)}" alt="" loading="lazy"></figure>`).join('');
 $('rBig').textContent=C.rating;$('rTxt').textContent=`Based on ${C.count.toLocaleString()} Google reviews`;
-const initials=['AM','JK','SW','LO','RN'],names=['Amina','James','Sarah','Lucas','Rehema'];
+const names=CC==='ke'?['Amina','James','Sarah','Lucas','Rehema']:['Emily','Mark','Jessica','Carlos','Anna'];const initials=names.map(n=>n.slice(0,2).toUpperCase());
 const cards=D.reviews.map((r,i)=>`<div class="rcard"><div class="stars">★★★★★</div><p>“${r}”</p><div class="who"><div class="av">${initials[i]}</div>${names[i]} · Sample review</div></div>`).join('');
 $('marq').innerHTML=cards+cards;
 $('bookImg').style.backgroundImage=`url(${U(D.bookImg,1200)})`;$('bookCap').textContent=D.bookCap;
@@ -399,9 +434,9 @@ $('fields').innerHTML=D.fields.map(f=>`<div class="field${f[3]?' full':''}"><lab
 $('form').onsubmit=e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.target));window.open(wa(D.msg(v)),'_blank');};
 $('visitH').innerHTML=D.visitH;
 const today=(new Date().getDay()+6)%7;
-$('hours').innerHTML=D.hours.map((r,i)=>`<tr class="${C.type!=='guesthouse'&&i===today?'today':''}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
-$('contact').innerHTML=`+${C.phone.replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/,'$1 $2 $3 $4')}<br>WhatsApp, calls & walk ins welcome<br>${C.town}, Kenya`;
-const mq=encodeURIComponent(C.name+' '+C.town+' Kenya');
+$('hours').innerHTML=D.hours.map((r,i)=>`<tr class="${C.type!=='guesthouse'&&C.type!=='tour'&&i===today?'today':''}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+$('contact').innerHTML=`+${CC==='ke'?C.phone.replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/,'$1 $2 $3 $4'):C.phone.replace(/^(\d{3})(\d{3})(\d+)$/,'$1 $2 $3')}<br>WhatsApp, calls & walk ins welcome<br>${C.town}, ${CN}`;
+const mq=encodeURIComponent(C.name+' '+C.town+' '+CN);
 $('map').src=`https://maps.google.com/maps?q=${mq}&output=embed`;
 $('dir').href=$('mDir').href=`https://www.google.com/maps/search/?api=1&query=${mq}`;
 $('mCall').href=`tel:+${C.phone}`;
